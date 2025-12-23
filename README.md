@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Surajit Patra</h1>
-<h3 align="center">A passionate Data Science from India</h3>
+<h3 align="center">A passionate on Data Science from India</h3>
 
 - 📫 How to reach me **surajitpatra.official@gmail.com**
 
