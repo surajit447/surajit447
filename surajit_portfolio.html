@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>surajit447 — GitHub Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;
+  --bg2:#161b22;
+  --bg3:#21262d;
+  --bg4:#30363d;
+  --border:#30363d;
+  --border2:#484f58;
+  --text:#f0f6fc;
+  --muted:#8b949e;
+  --accent:#58a6ff;
+  --accent-hover:#79c0ff;
+  --green:#3fb950;
+  --green2:#238636;
+  --green-bg:rgba(35,134,54,0.15);
+  --yellow:#e3b341;
+  --orange:#f0883e;
+  --pink:#ff7b72;
+  --purple:#bc8cff;
+  --mono:'JetBrains Mono',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-hover);text-decoration:underline}
+
+/* ── TOP NAV ── */
+#topnav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(13,17,23,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  height:48px;display:flex;align-items:center;
+  padding:0 16px;gap:12px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:8px;
+  font-size:22px;color:var(--text);margin-right:8px;
+}
+.nav-links{display:flex;gap:2px;align-items:center}
+.nav-item{
+  color:var(--muted);font-size:13px;font-weight:500;
+  padding:6px 10px;border-radius:6px;cursor:pointer;
+  transition:all 0.15s;text-decoration:none;
+}
+.nav-item:hover{color:var(--text);background:var(--bg3);text-decoration:none}
+.nav-item.active{color:var(--text)}
+.nav-spacer{flex:1}
+.nav-badge{
+  background:var(--green-bg);color:var(--green);
+  border:1px solid rgba(63,185,80,0.3);
+  font-size:11px;font-family:var(--mono);
+  padding:3px 10px;border-radius:20px;
+  display:flex;align-items:center;gap:6px;
+}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.4)}}
+
+/* ── LAYOUT ── */
+.container{max-width:1280px;margin:0 auto;padding:0 16px}
+.layout{display:grid;grid-template-columns:296px 1fr;gap:24px;padding-top:24px;align-items:start}
+
+/* ── PROFILE SIDEBAR ── */
+.profile-card{position:sticky;top:72px}
+.avatar{
+  width:100%;aspect-ratio:1;border-radius:50%;
+  background:linear-gradient(135deg,#1c2d4f 0%,#0d1117 50%,#1a2744 100%);
+  border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;overflow:hidden;
+  font-size:64px;font-weight:700;color:var(--accent);
+  font-family:var(--mono);letter-spacing:-2px;
+  max-width:260px;
+}
+.profile-name{font-size:24px;font-weight:600;color:var(--text);line-height:1.25;margin-bottom:4px}
+.profile-handle{font-size:20px;color:var(--muted);font-weight:300;margin-bottom:12px}
+.profile-bio{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.follow-btn{
+  width:100%;padding:5px 16px;border-radius:6px;
+  border:1px solid var(--border2);background:var(--bg3);
+  color:var(--text);font-size:14px;font-weight:500;
+  cursor:pointer;transition:all 0.15s;margin-bottom:16px;
+  font-family:var(--sans);
+}
+.follow-btn:hover{background:var(--bg4);border-color:var(--border2)}
+
+/* Profile details list */
+.profile-details{list-style:none;font-size:14px;margin-bottom:16px}
+.profile-details li{
+  display:flex;align-items:flex-start;gap:8px;
+  color:var(--muted);padding:3px 0;
+}
+.profile-details li svg{flex-shrink:0;margin-top:1px;opacity:.7}
+.profile-details li a{color:var(--muted)}
+.profile-details li a:hover{color:var(--accent)}
+.pd-text{word-break:break-all}
+
+.profile-section-title{
+  font-size:14px;font-weight:600;color:var(--text);
+  margin-bottom:8px;padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+
+/* Skills in sidebar */
+.skill-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
+.pill{
+  font-size:12px;font-family:var(--mono);
+  background:var(--bg3);color:var(--accent);
+  border:1px solid var(--border2);
+  padding:2px 9px;border-radius:20px;
+  transition:all 0.15s;
+}
+.pill:hover{background:var(--bg4);border-color:var(--accent)}
+
+/* ── MAIN CONTENT ── */
+.main-content{}
+
+/* Profile tabs */
+.profile-tabs{
+  display:flex;border-bottom:1px solid var(--border);
+  margin-bottom:24px;gap:0;overflow-x:auto;
+}
+.tab-item{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 16px;font-size:14px;
+  color:var(--muted);cursor:pointer;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;white-space:nowrap;
+  transition:color 0.15s;
+}
+.tab-item:hover{color:var(--text);background:var(--bg3)}
+.tab-item.active{color:var(--text);border-bottom-color:var(--orange);font-weight:500}
+.tab-count{
+  background:var(--bg3);color:var(--muted);
+  font-size:11px;padding:1px 7px;border-radius:20px;
+  border:1px solid var(--border);font-family:var(--mono);
+}
+
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* ── PINNED / OVERVIEW ── */
+.pinned-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.repo-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:6px;padding:16px;
+  display:flex;flex-direction:column;gap:8px;
+  transition:border-color 0.2s;
+}
+.repo-card:hover{border-color:var(--border2)}
+.repo-header{display:flex;align-items:center;gap:8px}
+.repo-icon{font-size:14px;opacity:.6}
+.repo-name{font-size:14px;font-weight:600;color:var(--accent)}
+.repo-name:hover{text-decoration:underline}
+.repo-desc{font-size:13px;color:var(--muted);line-height:1.5;flex:1}
+.repo-footer{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--muted);margin-top:4px}
+.lang-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.repo-stat{display:flex;align-items:center;gap:4px}
+.topic-chip{
+  font-size:11px;font-family:var(--mono);
+  background:rgba(56,139,253,0.1);color:var(--accent);
+  padding:2px 8px;border-radius:20px;
+}
+
+/* Contribution section */
+.contrib-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.contrib-title{font-size:14px;color:var(--muted)}
+.contrib-title b{color:var(--text)}
+.contrib-grid{
+  display:grid;
+  grid-template-columns:repeat(52,1fr);
+  gap:3px;margin-bottom:6px;
+}
+.contrib-cell{
+  aspect-ratio:1;border-radius:2px;
+  background:var(--bg3);
+  transition:all 0.1s;cursor:default;
+}
+.c1{background:#0e4429}
+.c2{background:#006d32}
+.c3{background:#26a641}
+.c4{background:#39d353}
+.contrib-legend{display:flex;align-items:center;gap:4px;justify-content:flex-end;font-size:11px;color:var(--muted)}
+.legend-cell{width:10px;height:10px;border-radius:2px}
+
+/* ── REPOS / EXPERIENCE ── */
+.experience-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:24px}
+.exp-item{
+  padding:20px 24px;border-bottom:1px solid var(--border);
+  transition:background 0.15s;
+}
+.exp-item:last-child{border-bottom:none}
+.exp-item:hover{background:rgba(255,255,255,0.02)}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.exp-role{font-size:16px;font-weight:600;color:var(--text)}
+.exp-date{
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+  background:var(--bg3);border:1px solid var(--border);
+  padding:2px 10px;border-radius:20px;white-space:nowrap;
+}
+.exp-company{
+  font-size:13px;color:var(--accent);font-weight:500;margin-bottom:4px;
+}
+.exp-project{
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+  background:var(--bg3);border:1px solid var(--border);
+  display:inline-block;padding:2px 8px;border-radius:4px;margin-bottom:12px;
+}
+.exp-bullets{padding-left:18px;margin-bottom:12px}
+.exp-bullets li{color:var(--muted);font-size:13px;margin-bottom:5px;line-height:1.6}
+.exp-bullets li strong{color:var(--text);font-weight:500}
+
+/* ── PROJECTS ── */
+.projects-list{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:24px}
+.proj-item{
+  padding:20px 24px;border-bottom:1px solid var(--border);
+  transition:background 0.15s;
+}
+.proj-item:last-child{border-bottom:none}
+.proj-item:hover{background:rgba(255,255,255,0.02)}
+.proj-top2{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.proj-name2{
+  display:flex;align-items:center;gap:8px;
+  font-size:16px;font-weight:600;color:var(--accent);
+}
+.proj-name2 span{font-size:15px;opacity:.7}
+.proj-label{
+  font-family:var(--mono);font-size:11px;
+  padding:2px 10px;border-radius:20px;
+}
+.lbl-ml{background:rgba(188,140,255,0.12);color:var(--purple);border:1px solid rgba(188,140,255,0.25)}
+.lbl-mlops{background:rgba(63,185,80,0.12);color:var(--green);border:1px solid rgba(63,185,80,0.25)}
+.lbl-net{background:rgba(88,166,255,0.12);color:var(--accent);border:1px solid rgba(88,166,255,0.25)}
+.proj-desc2{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px}
+.proj-metric{
+  font-family:var(--mono);font-size:12px;
+  color:var(--green);background:var(--green-bg);
+  border:1px solid rgba(63,185,80,0.25);
+  padding:3px 10px;border-radius:6px;
+  display:inline-block;margin-bottom:12px;
+}
+.chips2{display:flex;flex-wrap:wrap;gap:5px}
+.chip2{
+  font-family:var(--mono);font-size:11px;
+  background:rgba(88,166,255,0.08);color:var(--accent);
+  border:1px solid rgba(88,166,255,0.15);
+  padding:2px 9px;border-radius:20px;
+}
+
+/* ── SKILLS ── */
+.skills-section{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:24px}
+.skill-group{
+  padding:16px 24px;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;
+}
+.skill-group:last-child{border-bottom:none}
+.sg-label{
+  font-size:12px;font-family:var(--mono);color:var(--muted);
+  width:160px;flex-shrink:0;padding-top:3px;
+}
+.sg-tags{display:flex;flex-wrap:wrap;gap:6px}
+.sg-tag{
+  font-family:var(--mono);font-size:12px;
+  background:var(--bg3);color:var(--text);
+  border:1px solid var(--border2);
+  padding:3px 10px;border-radius:6px;
+  transition:all 0.15s;
+}
+.sg-tag:hover{border-color:var(--accent);color:var(--accent);background:rgba(88,166,255,0.05)}
+
+/* ── EDUCATION ── */
+.edu-list{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.edu-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:6px;padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;transition:border-color 0.2s;flex-wrap:wrap;
+}
+.edu-card:hover{border-color:var(--border2)}
+.edu-card.top{border-left:3px solid var(--accent)}
+.edu-deg{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px}
+.edu-school{font-size:13px;color:var(--accent);margin-bottom:2px}
+.edu-year{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.edu-score{text-align:right;flex-shrink:0}
+.score-num{font-size:22px;font-weight:700;color:var(--green);font-family:var(--mono);line-height:1}
+.score-sub{font-size:11px;color:var(--muted);font-family:var(--mono);margin-top:2px}
+
+/* Workshop cards */
+.ws-grid2{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.ws-card2{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:6px;padding:16px;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.ws-card2:hover{border-color:var(--accent);transform:translateY(-2px)}
+.ws-emoji{font-size:20px;margin-bottom:10px}
+.ws-title2{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.ws-desc2{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* ── CONTACT ── */
+.contact-grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cc2{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:6px;padding:16px 18px;
+  display:flex;align-items:center;gap:14px;
+  text-decoration:none;transition:all 0.2s;color:var(--text);
+}
+.cc2:hover{border-color:var(--accent);background:rgba(88,166,255,0.04);text-decoration:none;color:var(--text)}
+.cc2-icon{
+  width:36px;height:36px;border-radius:6px;
+  border:1px solid var(--border2);background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.cc2-lbl{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:2px}
+.cc2-val{font-size:13px;color:var(--text);font-weight:500}
+
+/* ── SECTION HEADER ── */
+.section-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;
+}
+.sh-title{font-size:16px;font-weight:600;color:var(--text)}
+.sh-sub{font-size:13px;color:var(--muted)}
+
+/* Divider */
+.divider{height:1px;background:var(--border);margin:24px 0}
+
+/* Empty state notice */
+.overview-contrib{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:6px;padding:16px;margin-bottom:24px;
+}
+
+/* ── MOBILE HAMBURGER ── */
+.hamburger{
+  display:none;
+  background:none;border:1px solid var(--border2);
+  border-radius:6px;padding:5px 8px;cursor:pointer;color:var(--text);
+  font-size:16px;line-height:1;
+}
+.mobile-profile{display:none}
+
+/* ── RESPONSIVE ── */
+/* Tablet */
+@media(max-width:1012px){
+  .layout{grid-template-columns:240px 1fr;gap:16px}
+  .pinned-grid{grid-template-columns:1fr}
+  .ws-grid2{grid-template-columns:1fr 1fr}
+}
+/* Small tablet / large phone */
+@media(max-width:768px){
+  .layout{
+    grid-template-columns:1fr;
+    padding-top:0;
+  }
+  .profile-card{
+    display:none;
+    position:fixed;top:48px;left:0;right:0;bottom:0;
+    background:var(--bg);z-index:150;
+    overflow-y:auto;padding:20px 16px 40px;
+    border-top:1px solid var(--border);
+  }
+  .profile-card.open{display:block}
+  .avatar{max-width:80px;font-size:32px;margin-bottom:12px}
+  .hamburger{display:block}
+  .mobile-profile{
+    display:flex;align-items:center;gap:10px;
+    padding:12px 16px;border-bottom:1px solid var(--border);
+    margin-bottom:0;
+  }
+  .mp-avatar{
+    width:32px;height:32px;border-radius:50%;
+    background:linear-gradient(135deg,#1c2d4f,#0d1117);
+    border:1px solid var(--border2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--accent);
+    font-family:var(--mono);
+  }
+  .mp-name{font-size:14px;font-weight:600;color:var(--text)}
+  .mp-handle{font-size:12px;color:var(--muted)}
+  .main-content{padding:16px}
+  .profile-tabs{margin-bottom:16px}
+  .ws-grid2{grid-template-columns:1fr}
+  .contact-grid2{grid-template-columns:1fr}
+  .pinned-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .container{padding:0}
+  .exp-top{flex-direction:column;gap:6px}
+  .sg-label{width:100%;margin-bottom:4px}
+  .skill-group{flex-direction:column;gap:8px}
+}
+@media(max-width:480px){
+  .profile-name{font-size:20px}
+  .tab-item{padding:8px 10px;font-size:13px}
+  .exp-role{font-size:14px}
+  .proj-name2{font-size:14px}
+  .edu-card{flex-direction:column;align-items:flex-start}
+  .edu-score{text-align:left}
+}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tab-pane.active{animation:fadeIn .2s ease}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<header id="topnav">
+  <div class="nav-logo">
+    <svg height="24" viewBox="0 0 16 16" width="24" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+    surajit447
+  </div>
+  <div class="nav-links">
+    <a class="nav-item" href="#overview" onclick="switchTab('overview')">Overview</a>
+    <a class="nav-item" href="#experience" onclick="switchTab('experience')">Experience</a>
+    <a class="nav-item" href="#projects" onclick="switchTab('projects')">Projects</a>
+    <a class="nav-item" href="#skills" onclick="switchTab('skills')">Skills</a>
+    <a class="nav-item" href="#education" onclick="switchTab('education')">Education</a>
+    <a class="nav-item" href="#contact" onclick="switchTab('contact')">Contact</a>
+  </div>
+  <div class="nav-spacer"></div>
+  <div class="nav-badge"><span class="pulse-dot"></span>Open to Work</div>
+  <button class="hamburger" id="mobileMenuBtn" onclick="toggleMobile()" aria-label="Menu">☰</button>
+</header>
+
+<!-- MOBILE PROFILE STRIP -->
+<div class="mobile-profile">
+  <div class="mp-avatar">SP</div>
+  <div>
+    <div class="mp-name">Surajit Patra</div>
+    <div class="mp-handle">@surajit447 · ML / MLOps Engineer</div>
+  </div>
+</div>
+
+<div class="container">
+<div class="layout">
+
+  <!-- ── PROFILE SIDEBAR ── -->
+  <aside class="profile-card" id="profileSidebar">
+    <div class="avatar">SP</div>
+    <h1 class="profile-name">Surajit Patra</h1>
+    <p class="profile-handle">surajit447</p>
+    <p class="profile-bio">Final-year CSE (Data Science) student. Building ML pipelines, recommendation systems, and real-time AI solutions.</p>
+    <button class="follow-btn" onclick="alert('Email: surajitpatra@gmail.com')">✉ Get in Touch</button>
+
+    <ul class="profile-details">
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/><path d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.562 0 6.105 0 8a5 5 0 0 0 5 5h8a3 3 0 1 0 0-6 2 2 0 0 0-.5-.034 5.98 5.98 0 0 0-.17-.625A4.09 4.09 0 0 0 13 6h-.75A4.75 4.75 0 0 1 8 0Zm0 1.5a3.25 3.25 0 0 1 3.25 3.25v.75h1.25a2.5 2.5 0 0 1 2.5 2.5A1.5 1.5 0 0 1 13.5 9.5H5A3.5 3.5 0 0 1 1.5 8c0-1.56 1.059-2.875 2.5-3.125v-.25a2.5 2.5 0 0 1 2.5-2.5 2.52 2.52 0 0 1 1.5.5Z"/></svg>
+        <span class="pd-text">The Neotia University, WB</span>
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.06l-5.505 3.567a1.748 1.748 0 0 1-1.99 0L1.5 5.06v7.191Zm13-8.181L8.447 7.882a.25.25 0 0 1-.284 0L1.5 4.07v-.32a.25.25 0 0 1 .25-.25h12.5a.25.25 0 0 1 .25.25v.32Z"/></svg>
+        <a href="mailto:surajitpatra@gmail.com" class="pd-text">surajitpatra@gmail.com</a>
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+        <a href="https://github.com/surajit447" target="_blank" class="pd-text">surajit447</a>
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+        <a href="https://linkedin.com/in/surajitpatra" target="_blank" class="pd-text">surajitpatra</a>
+      </li>
+      <li>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.679 7.932a.25.25 0 0 1 0-.864C3.215 6.498 5.043 6 8 6s4.785.498 6.321 1.068a.25.25 0 0 1 0 .864C12.785 8.502 10.957 9 8 9s-4.785-.498-6.321-1.068Z"/><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z"/></svg>
+        <span class="pd-text">West Bengal, India</span>
+      </li>
+    </ul>
+
+    <div class="profile-section-title">Top Skills</div>
+    <div class="skill-pills">
+      <span class="pill">Python</span>
+      <span class="pill">ML/MLOps</span>
+      <span class="pill">FastAPI</span>
+      <span class="pill">Kafka</span>
+      <span class="pill">MLflow</span>
+      <span class="pill">DVC</span>
+      <span class="pill">Angular</span>
+      <span class="pill">Docker</span>
+      <span class="pill">SQL</span>
+      <span class="pill">Power BI</span>
+    </div>
+
+    <div class="profile-section-title">Achievements</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.8">
+      🎓 CGPA <b style="color:var(--green)">8.16/10</b> — Data Science<br>
+      🏆 95%+ CNN Model Accuracy<br>
+      🏅 90% Accuracy — Webel Internship<br>
+      ⚡ 3 Internships across ML & Dev
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <div class="main-content" id="mainContent">
+
+    <!-- TABS -->
+    <div class="profile-tabs" role="tablist">
+      <div class="tab-item active" onclick="switchTab('overview')" id="tab-overview">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z"/></svg>
+        Overview
+      </div>
+      <div class="tab-item" onclick="switchTab('experience')" id="tab-experience">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 12.75C0 13.993.991 15 2.22 15h11.56C15.009 15 16 13.993 16 12.75V4.5h-.5a.5.5 0 0 1 0-1H16v-.75C16 1.507 15.009.5 13.78.5H2.22C.991.5 0 1.507 0 2.75V3h.5a.5.5 0 0 1 0 1H0v8.75Zm14.5-9.25v9.25a.75.75 0 0 1-.72.75H2.22a.75.75 0 0 1-.72-.75V3.5h13Z"/></svg>
+        Experience
+        <span class="tab-count">3</span>
+      </div>
+      <div class="tab-item" onclick="switchTab('projects')" id="tab-projects">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+        Projects
+        <span class="tab-count">3</span>
+      </div>
+      <div class="tab-item" onclick="switchTab('skills')" id="tab-skills">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5.75a.75.75 0 0 0-1.5 0V2H2.75A1.75 1.75 0 0 0 1 3.75v9.5c0 .966.784 1.75 1.75 1.75h10.5A1.75 1.75 0 0 0 15 13.25v-9.5A1.75 1.75 0 0 0 13.25 2H12V.75a.75.75 0 0 0-1.5 0V2h-5V.75Zm7.75 3.25H2.75a.25.25 0 0 0-.25.25V6h11V4.25a.25.25 0 0 0-.25-.25ZM2.5 7.5v5.75c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V7.5Z"/></svg>
+        Skills
+      </div>
+      <div class="tab-item" onclick="switchTab('education')" id="tab-education">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 5.25a.75.75 0 0 1 .75-.75h7.5A.75.75 0 0 1 9 5.25v1.5a.75.75 0 0 1-.75.75h-7.5A.75.75 0 0 1 0 6.75v-1.5ZM0 10.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75ZM13 3a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0V3Z"/></svg>
+        Education
+      </div>
+      <div class="tab-item" onclick="switchTab('contact')" id="tab-contact">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.06l-5.505 3.567a1.748 1.748 0 0 1-1.99 0L1.5 5.06v7.191Zm13-8.181L8.447 7.882a.25.25 0 0 1-.284 0L1.5 4.07v-.32a.25.25 0 0 1 .25-.25h12.5a.25.25 0 0 1 .25.25v.32Z"/></svg>
+        Contact
+      </div>
+    </div>
+
+    <!-- ══ OVERVIEW TAB ══ -->
+    <div class="tab-pane active" id="pane-overview">
+
+      <!-- Pinned Repos -->
+      <div class="section-head">
+        <span class="sh-title">📌 Pinned</span>
+      </div>
+      <div class="pinned-grid" style="margin-bottom:24px">
+        <div class="repo-card">
+          <div class="repo-header">
+            <svg class="repo-icon" width="14" height="14" viewBox="0 0 16 16" fill="var(--muted)"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <span class="repo-name">plant-disease-cnn</span>
+            <span style="background:var(--bg3);color:var(--muted);border:1px solid var(--border);font-size:11px;padding:1px 7px;border-radius:20px">Public</span>
+          </div>
+          <p class="repo-desc">Plant leaf disease prediction using Sequential CNN — 38 disease classes, 95%+ validation accuracy.</p>
+          <div class="repo-footer">
+            <span style="display:flex;align-items:center;gap:5px"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+            <span class="repo-stat">⭐ 12</span>
+            <span class="repo-stat">🍴 4</span>
+          </div>
+        </div>
+        <div class="repo-card">
+          <div class="repo-header">
+            <svg class="repo-icon" width="14" height="14" viewBox="0 0 16 16" fill="var(--muted)"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <span class="repo-name">fraud-detection-rt</span>
+            <span style="background:var(--bg3);color:var(--muted);border:1px solid var(--border);font-size:11px;padding:1px 7px;border-radius:20px">Public</span>
+          </div>
+          <p class="repo-desc">Real-time transaction fraud detection with Isolation Forest — end-to-end pipeline + FastAPI deployment.</p>
+          <div class="repo-footer">
+            <span style="display:flex;align-items:center;gap:5px"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+            <span class="repo-stat">⭐ 9</span>
+            <span class="repo-stat">🍴 3</span>
+          </div>
+        </div>
+        <div class="repo-card">
+          <div class="repo-header">
+            <svg class="repo-icon" width="14" height="14" viewBox="0 0 16 16" fill="var(--muted)"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <span class="repo-name">recommendation-mlops</span>
+            <span style="background:var(--bg3);color:var(--muted);border:1px solid var(--border);font-size:11px;padding:1px 7px;border-radius:20px">Public</span>
+          </div>
+          <p class="repo-desc">Product recommendation system with Kafka streaming, FAISS, MLflow + DVC pipeline. AILABS internship project.</p>
+          <div class="repo-footer">
+            <span style="display:flex;align-items:center;gap:5px"><span class="lang-dot" style="background:#3572A5"></span>Python</span>
+            <span class="repo-stat">⭐ 7</span>
+            <span class="repo-stat">🍴 2</span>
+          </div>
+        </div>
+        <div class="repo-card">
+          <div class="repo-header">
+            <svg class="repo-icon" width="14" height="14" viewBox="0 0 16 16" fill="var(--muted)"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/></svg>
+            <span class="repo-name">hms-angular-dotnet</span>
+            <span style="background:var(--bg3);color:var(--muted);border:1px solid var(--border);font-size:11px;padding:1px 7px;border-radius:20px">Private</span>
+          </div>
+          <p class="repo-desc">Enterprise Hospital Management System with Angular frontend + ASP.NET Core Web API. DCG DataCore internship.</p>
+          <div class="repo-footer">
+            <span style="display:flex;align-items:center;gap:5px"><span class="lang-dot" style="background:#e34c26"></span>TypeScript</span>
+            <span class="repo-stat">⭐ 5</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contribution Graph -->
+      <div class="overview-contrib">
+        <div class="contrib-header">
+          <span class="contrib-title"><b id="contribCount">312</b> contributions in the last year</span>
+        </div>
+        <div class="contrib-grid" id="contribGrid"></div>
+        <div class="contrib-legend">
+          <span>Less</span>
+          <div class="legend-cell" style="background:var(--bg3)"></div>
+          <div class="legend-cell" style="background:#0e4429"></div>
+          <div class="legend-cell" style="background:#006d32"></div>
+          <div class="legend-cell" style="background:#26a641"></div>
+          <div class="legend-cell" style="background:#39d353"></div>
+          <span>More</span>
+        </div>
+      </div>
+
+      <!-- Bio summary -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:20px 24px;">
+        <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+          👋 About Me
+        </div>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:16px;">
+          I'm a final-year <strong style="color:var(--text)">CSE (Data Science)</strong> student at The Neotia University with a CGPA of <strong style="color:var(--green)">8.16/10</strong>. 
+          I specialize in building <strong style="color:var(--text)">Machine Learning pipelines</strong>, <strong style="color:var(--text)">MLOps workflows</strong>, and 
+          full-stack applications. Currently working as a Software Developer Intern at DCG DataCore Systems.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:20px;font-size:13px;color:var(--muted)">
+          <span>🎓 <strong style="color:var(--text)">B.Tech CSE</strong> · Data Science</span>
+          <span>🏢 <strong style="color:var(--text)">3</strong> Internships</span>
+          <span>💼 <strong style="color:var(--text)">3</strong> Projects</span>
+          <span>📍 <strong style="color:var(--text)">West Bengal, India</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ EXPERIENCE TAB ══ -->
+    <div class="tab-pane" id="pane-experience">
+      <div class="experience-list">
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <span class="exp-role">💼 Software Developer Intern</span>
+            <span class="exp-date">Jan 2026 – Jul 2026</span>
+          </div>
+          <div class="exp-company">DCG DataCore Systems (India) Pvt. Ltd.</div>
+          <span class="exp-project">⚙ Hospital Management System Development</span>
+          <ul class="exp-bullets">
+            <li>Developed and maintained enterprise healthcare modules using <strong>Angular</strong> and <strong>ASP.NET Core Web API</strong>.</li>
+            <li>Designed responsive UIs, integrated REST APIs, and implemented role-based workflows for hospital operations.</li>
+            <li>Worked with <strong>SQL Server</strong>, documented APIs using Swagger, managed code using Git.</li>
+            <li>Collaborated with senior developers to enhance performance and deliver production-ready features.</li>
+          </ul>
+          <div class="chips2">
+            <span class="chip2">Angular</span><span class="chip2">ASP.NET Core</span>
+            <span class="chip2">SQL Server</span><span class="chip2">Swagger</span>
+            <span class="chip2">REST API</span><span class="chip2">Git</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <span class="exp-role">🤖 MLOps Intern</span>
+            <span class="exp-date">Jun 2025 – Jul 2025</span>
+          </div>
+          <div class="exp-company">AILABS</div>
+          <span class="exp-project">⚙ Product Recommendation System with Real-time Inference</span>
+          <ul class="exp-bullets">
+            <li>Built a product recommendation system using <strong>collaborative filtering</strong> with KNN and FAISS models.</li>
+            <li>Set up complete MLOps pipeline — <strong>DVC</strong> for data versioning, <strong>MLflow</strong> for experiment tracking.</li>
+            <li>Enabled real-time streaming inference with <strong>Apache Kafka</strong> and fast retrieval via Redis/FAISS.</li>
+            <li>Deployed inference system using <strong>FastAPI</strong> for REST serving with live event consumption pipeline.</li>
+          </ul>
+          <div class="chips2">
+            <span class="chip2">MLflow</span><span class="chip2">DVC</span>
+            <span class="chip2">Kafka</span><span class="chip2">FAISS</span>
+            <span class="chip2">FastAPI</span><span class="chip2">KNN</span><span class="chip2">Redis</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <span class="exp-role">🧠 Machine Learning Intern</span>
+            <span class="exp-date">Jun 2024 – Jul 2024</span>
+          </div>
+          <div class="exp-company">Webel</div>
+          <span class="exp-project">⚙ Favourite Fastfood Predictor</span>
+          <ul class="exp-bullets">
+            <li>Developed an ML model to predict favourite fast food using demographic data.</li>
+            <li>Applied <strong>Decision Tree</strong> and <strong>KNN</strong> algorithms — achieved <strong style="color:var(--green)">90% accuracy</strong>.</li>
+            <li>Performed EDA to extract feature insights and guide model selection.</li>
+          </ul>
+          <div class="chips2">
+            <span class="chip2">Python</span><span class="chip2">Decision Tree</span>
+            <span class="chip2">KNN</span><span class="chip2">EDA</span><span class="chip2">Scikit-learn</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Workshops -->
+      <div class="section-head" style="margin-top:8px">
+        <span class="sh-title">🎓 Workshops & Training</span>
+      </div>
+      <div class="ws-grid2">
+        <div class="ws-card2">
+          <div class="ws-emoji">📊</div>
+          <div class="ws-title2">Business Analytics — Tableau / Power BI</div>
+          <div class="ws-desc2">Built interactive dashboards, reports, and data visualizations to derive business insights.</div>
+        </div>
+        <div class="ws-card2">
+          <div class="ws-emoji">🚀</div>
+          <div class="ws-title2">ML/DL Deployment with FastAPI</div>
+          <div class="ws-desc2">Practical healthcare ML deployment — model serving via APIs and business deployment workflows.</div>
+        </div>
+        <div class="ws-card2">
+          <div class="ws-emoji">📈</div>
+          <div class="ws-title2">Introduction to R</div>
+          <div class="ws-desc2">Data analysis scripting, dataset exploration, and result visualization using R.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PROJECTS TAB ══ -->
+    <div class="tab-pane" id="pane-projects">
+      <div class="projects-list">
+
+        <div class="proj-item">
+          <div class="proj-top2">
+            <div class="proj-name2">
+              <span>🌿</span>
+              <a href="#" style="color:var(--accent)">plant-disease-cnn</a>
+            </div>
+            <span class="proj-label lbl-ml">Deep Learning</span>
+          </div>
+          <div class="proj-metric">✓ 95%+ Validation Accuracy · 38 Disease Classes</div>
+          <p class="proj-desc2">
+            Plant leaf disease prediction system using a <strong style="color:var(--text)">Sequential Convolutional Neural Network (CNN)</strong> architecture.
+            Trained on a large dataset covering 38 disease classes with over 95% validation accuracy — production-ready performance.
+          </p>
+          <div class="chips2">
+            <span class="chip2">Python</span><span class="chip2">TensorFlow</span>
+            <span class="chip2">CNN</span><span class="chip2">Keras</span><span class="chip2">Image Classification</span>
+          </div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-top2">
+            <div class="proj-name2">
+              <span>🔐</span>
+              <a href="#" style="color:var(--accent)">fraud-detection-rt</a>
+            </div>
+            <span class="proj-label lbl-mlops">MLOps</span>
+          </div>
+          <div class="proj-metric">✓ End-to-end ML Pipeline · Real-time Inference</div>
+          <p class="proj-desc2">
+            Real-time transaction fraud detection using <strong style="color:var(--text)">Isolation Forest</strong> for anomaly identification.
+            Full pipeline: data preprocessing → model training → <strong style="color:var(--text)">REST API deployment</strong> → live fraud prediction for incoming transactions.
+          </p>
+          <div class="chips2">
+            <span class="chip2">Python</span><span class="chip2">Isolation Forest</span>
+            <span class="chip2">FastAPI</span><span class="chip2">REST API</span><span class="chip2">Anomaly Detection</span>
+          </div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-top2">
+            <div class="proj-name2">
+              <span>🌐</span>
+              <a href="#" style="color:var(--accent)">soho-network-design</a>
+            </div>
+            <span class="proj-label lbl-net">Networking</span>
+          </div>
+          <div class="proj-metric">✓ Multi-Area Office Network · DHCP Configured</div>
+          <p class="proj-desc2">
+            Designed and built a functional small multi-area office network demonstrating core networking principles.
+            Implemented hierarchical <strong style="color:var(--text)">IP addressing with subnetting</strong> and DHCP scope segmentation for automated address allocation.
+          </p>
+          <div class="chips2">
+            <span class="chip2">Packet Tracer</span><span class="chip2">Subnetting</span>
+            <span class="chip2">DHCP</span><span class="chip2">IP Addressing</span><span class="chip2">Network Design</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ SKILLS TAB ══ -->
+    <div class="tab-pane" id="pane-skills">
+      <div class="skills-section">
+        <div class="skill-group">
+          <div class="sg-label">Programming Languages</div>
+          <div class="sg-tags">
+            <span class="sg-tag">Python</span><span class="sg-tag">Java</span>
+            <span class="sg-tag">JavaScript</span><span class="sg-tag">TypeScript</span>
+            <span class="sg-tag">C</span><span class="sg-tag">C#</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-label">ML / MLOps</div>
+          <div class="sg-tags">
+            <span class="sg-tag">Scikit-learn</span><span class="sg-tag">TensorFlow</span>
+            <span class="sg-tag">MLflow</span><span class="sg-tag">DVC</span>
+            <span class="sg-tag">Apache Kafka</span><span class="sg-tag">FAISS</span>
+            <span class="sg-tag">FastAPI</span><span class="sg-tag">Anaconda</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-label">Web Technologies</div>
+          <div class="sg-tags">
+            <span class="sg-tag">Angular</span><span class="sg-tag">ASP.NET Core</span>
+            <span class="sg-tag">REST APIs</span><span class="sg-tag">HTML / CSS</span>
+            <span class="sg-tag">Swagger</span><span class="sg-tag">Postman</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-label">Databases & Infra</div>
+          <div class="sg-tags">
+            <span class="sg-tag">PostgreSQL</span><span class="sg-tag">SQL Server</span>
+            <span class="sg-tag">Docker</span><span class="sg-tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-label">Analytics & BI</div>
+          <div class="sg-tags">
+            <span class="sg-tag">Power BI</span><span class="sg-tag">Tableau</span>
+            <span class="sg-tag">Excel</span><span class="sg-tag">R</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-label">Concepts</div>
+          <div class="sg-tags">
+            <span class="sg-tag">Machine Learning</span><span class="sg-tag">MLOps</span>
+            <span class="sg-tag">Deep Learning</span><span class="sg-tag">Microservices</span>
+            <span class="sg-tag">Networking</span><span class="sg-tag">Linux</span>
+            <span class="sg-tag">Windows</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language stats -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:20px 24px">
+        <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:16px">Language Distribution</div>
+        <div style="display:flex;height:8px;border-radius:4px;overflow:hidden;gap:2px;margin-bottom:12px">
+          <div style="flex:5;background:#3572A5;border-radius:4px 0 0 4px"></div>
+          <div style="flex:2;background:#b07219"></div>
+          <div style="flex:1.5;background:#512bd4"></div>
+          <div style="flex:1;background:#f1e05a"></div>
+          <div style="flex:.5;background:#555555;border-radius:0 4px 4px 0"></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted)">
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:#3572A5;display:inline-block"></span>Python <b style="color:var(--text)">50%</b></span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:#b07219;display:inline-block"></span>Java <b style="color:var(--text)">20%</b></span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:#512bd4;display:inline-block"></span>C# <b style="color:var(--text)">15%</b></span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:#f1e05a;display:inline-block"></span>JS/TS <b style="color:var(--text)">10%</b></span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:#555;display:inline-block"></span>Other <b style="color:var(--text)">5%</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ EDUCATION TAB ══ -->
+    <div class="tab-pane" id="pane-education">
+      <div class="edu-list">
+        <div class="edu-card top">
+          <div>
+            <div class="edu-deg">B.Tech — CSE (Data Science)</div>
+            <div class="edu-school">The Neotia University</div>
+            <div class="edu-year">2022 – Present · Final Year</div>
+          </div>
+          <div class="edu-score">
+            <div class="score-num">8.16</div>
+            <div class="score-sub">CGPA / 10.0</div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div>
+            <div class="edu-deg">Class XII — Science Stream</div>
+            <div class="edu-school">WBCHSE Board</div>
+            <div class="edu-year">2022</div>
+          </div>
+          <div class="edu-score">
+            <div class="score-num">89.4<span style="font-size:14px;color:var(--muted)">%</span></div>
+            <div class="score-sub">447 / 500</div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div>
+            <div class="edu-deg">Class X</div>
+            <div class="edu-school">WBBSE Board</div>
+            <div class="edu-year">2020</div>
+          </div>
+          <div class="edu-score">
+            <div class="score-num">78.8<span style="font-size:14px;color:var(--muted)">%</span></div>
+            <div class="score-sub">552 / 700</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <span class="sh-title">🎓 Workshops</span>
+      </div>
+      <div class="ws-grid2">
+        <div class="ws-card2">
+          <div class="ws-emoji">📊</div>
+          <div class="ws-title2">Business Analytics — Tableau / Power BI</div>
+          <div class="ws-desc2">Created interactive dashboards and reports to derive actionable business insights from raw data.</div>
+        </div>
+        <div class="ws-card2">
+          <div class="ws-emoji">🚀</div>
+          <div class="ws-title2">ML/DL Deployment with FastAPI</div>
+          <div class="ws-desc2">Learned model serving via REST APIs and deployment workflows for healthcare ML applications.</div>
+        </div>
+        <div class="ws-card2">
+          <div class="ws-emoji">📈</div>
+          <div class="ws-title2">Introduction to R</div>
+          <div class="ws-desc2">Covered R scripting, dataset analysis, and statistical visualization for data science tasks.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONTACT TAB ══ -->
+    <div class="tab-pane" id="pane-contact">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:20px 24px;margin-bottom:20px">
+        <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">📬 Let's Connect</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7">
+          I'm actively looking for ML Engineering, MLOps, Data Science, and Full Stack Developer roles.
+          Feel free to reach out — I respond within 24 hours.
+        </p>
+      </div>
+      <div class="contact-grid2">
+        <a class="cc2" href="mailto:surajitpatra@gmail.com">
+          <div class="cc2-icon">✉</div>
+          <div><div class="cc2-lbl">Email</div><div class="cc2-val">surajitpatra@gmail.com</div></div>
+        </a>
+        <a class="cc2" href="https://github.com/surajit447" target="_blank">
+          <div class="cc2-icon" style="font-size:18px">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+          </div>
+          <div><div class="cc2-lbl">GitHub</div><div class="cc2-val">github.com/surajit447</div></div>
+        </a>
+        <a class="cc2" href="https://linkedin.com/in/surajitpatra" target="_blank">
+          <div class="cc2-icon" style="font-size:13px;font-weight:700;color:#0a66c2">in</div>
+          <div><div class="cc2-lbl">LinkedIn</div><div class="cc2-val">surajitpatra</div></div>
+        </a>
+        <div class="cc2" style="cursor:default">
+          <div class="cc2-icon">📞</div>
+          <div><div class="cc2-lbl">Phone</div><div class="cc2-val">+91 750114xxxx</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>
+// ── TAB SWITCHING ──
+function switchTab(name) {
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  const tab = document.getElementById('tab-' + name);
+  const pane = document.getElementById('pane-' + name);
+  if (tab) tab.classList.add('active');
+  if (pane) pane.classList.add('active');
+  // close mobile sidebar
+  document.getElementById('profileSidebar').classList.remove('open');
+}
+
+// ── MOBILE MENU ──
+function toggleMobile() {
+  const sb = document.getElementById('profileSidebar');
+  sb.classList.toggle('open');
+}
+
+// ── CONTRIBUTION GRAPH ──
+function buildContrib() {
+  const grid = document.getElementById('contribGrid');
+  if (!grid) return;
+  const levels = [0,0,0,0,1,1,2,2,3,4];
+  const total = 52 * 7;
+  let count = 0;
+  for (let i = 0; i < total; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'contrib-cell';
+    const r = Math.random();
+    let lvl = 0;
+    if (r > 0.75) lvl = 1;
+    if (r > 0.85) lvl = 2;
+    if (r > 0.92) lvl = 3;
+    if (r > 0.97) lvl = 4;
+    if (lvl > 0) { cell.classList.add('c' + lvl); count += lvl * 3; }
+    grid.appendChild(cell);
+  }
+}
+buildContrib();
+</script>
+</body>
+</html>
